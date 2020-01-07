@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="由于在工作中项目涉及服务器SSH版本过低，无法通过安全漏洞扫描，需要升级SSH版本至7.4以上；但因涉及到卸载SSH服务等操作，在网上参考一些教程，依然踩了一些坑。现在将详细的升级过程记录下来，供各位技术人员参考。  查看现版本信息 环境：Centos7.2SSH版本：openSSH 6.6  查看SSH版本1#ssh -V 查看SSL版本1#openssl version 查看zlib版本1#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux升级SSH">
+<meta property="og:url" content="http://yoursite.com/2018/08/18/linux_SSH/index.html">
+<meta property="og:site_name" content="Siren&#39;s Blog">
+<meta property="og:description" content="由于在工作中项目涉及服务器SSH版本过低，无法通过安全漏洞扫描，需要升级SSH版本至7.4以上；但因涉及到卸载SSH服务等操作，在网上参考一些教程，依然踩了一些坑。现在将详细的升级过程记录下来，供各位技术人员参考。  查看现版本信息 环境：Centos7.2SSH版本：openSSH 6.6  查看SSH版本1#ssh -V 查看SSL版本1#openssl version 查看zlib版本1#">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-18T09:17:07.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux升级SSH">
+<meta name="twitter:description" content="由于在工作中项目涉及服务器SSH版本过低，无法通过安全漏洞扫描，需要升级SSH版本至7.4以上；但因涉及到卸载SSH服务等操作，在网上参考一些教程，依然踩了一些坑。现在将详细的升级过程记录下来，供各位技术人员参考。  查看现版本信息 环境：Centos7.2SSH版本：openSSH 6.6  查看SSH版本1#ssh -V 查看SSL版本1#openssl version 查看zlib版本1#">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/18/linux_SSH/"/>
+
+
+
+
+
+  <title>Linux升级SSH | Siren's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Siren's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/linux_SSH/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Neverborn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Siren's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux升级SSH</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T13:40:33+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>由于在工作中项目涉及服务器SSH版本过低，无法通过安全漏洞扫描，需要升级SSH版本至7.4以上；但因涉及到卸载SSH服务等操作，在网上参考一些教程，依然踩了一些坑。现在将详细的升级过程记录下来，供各位技术人员参考。</p>
+</blockquote>
+<h4 id="查看现版本信息"><a href="#查看现版本信息" class="headerlink" title="查看现版本信息"></a>查看现版本信息</h4><blockquote>
+<p>环境：Centos7.2<br>SSH版本：openSSH 6.6</p>
+</blockquote>
+<h5 id="查看SSH版本"><a href="#查看SSH版本" class="headerlink" title="查看SSH版本"></a>查看SSH版本</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#ssh -V</span><br></pre></td></tr></table></figure>
+<h5 id="查看SSL版本"><a href="#查看SSL版本" class="headerlink" title="查看SSL版本"></a>查看SSL版本</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#openssl <span class="keyword">version</span></span><br></pre></td></tr></table></figure>
+<h5 id="查看zlib版本"><a href="#查看zlib版本" class="headerlink" title="查看zlib版本"></a>查看zlib版本</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#rpm -<span class="keyword">qa</span>|<span class="keyword">grep</span> zlib</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要openSSL在1.01以上以及zlib在1.2.5以上才能升级SSH</p>
+</blockquote>
+<h5 id="升级openSSL-amp-amp-zlib"><a href="#升级openSSL-amp-amp-zlib" class="headerlink" title="升级openSSL&amp;&amp;zlib"></a>升级openSSL&amp;&amp;zlib</h5><p>openSSL升级为1.01以上以及zlib升级为1.2.5以上。升级过程略。</p>
+<a id="more"></a>
+<h5 id="下载openssh-7-4"><a href="#下载openssh-7-4" class="headerlink" title="下载openssh-7.4"></a>下载openssh-7.4</h5><p>在openssh官网下载openssh-7.4p1.tar.gz包放置到服务器的usr/src目录下</p>
+<p><a href="https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/" target="_blank" rel="noopener">官网下载地址</a></p>
+<h4 id="安装并开启telnet服务"><a href="#安装并开启telnet服务" class="headerlink" title="安装并开启telnet服务"></a>安装并开启telnet服务</h4><p>openssh升级过程中需要卸载旧版本openssh，为了保证主机不失联，需要开启telnet连接通道。</p>
+<h5 id="查看telnet服务"><a href="#查看telnet服务" class="headerlink" title="查看telnet服务"></a>查看telnet服务</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#rpm -q telnet-server</span><br></pre></td></tr></table></figure>
+<p>查看telnet-server是否已安装，若没有安装则进行如下操作。<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># yum install telnet-server 安装telnet的服务器</span><br><span class="line"># yum <span class="keyword">list</span>|<span class="keyword">grep</span> xinetd 安装xinetd服务</span><br><span class="line"># yum install xinetd.x86_64 将xinetd 服务安装到系统中</span><br><span class="line">#rpm -<span class="keyword">qa</span> | <span class="keyword">grep</span> telnet  安装后的检查</span><br><span class="line">#rpm -<span class="keyword">qa</span> | <span class="keyword">grep</span> xinetd</span><br></pre></td></tr></table></figure></p>
+<h5 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h5><p>防止telnet可能无法连接。<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># service iptables <span class="keyword">stop</span></span><br><span class="line"># chkconfig iptables off</span><br></pre></td></tr></table></figure></p>
+<h5 id="启动telnet服务"><a href="#启动telnet服务" class="headerlink" title="启动telnet服务"></a>启动telnet服务</h5><p>telnet服务之后,默认是不开启服务,修改文件/etc/xinetd.d/telnet。<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">vim</span> /etc/xinetd.d/telnet</span><br></pre></td></tr></table></figure></p>
+<p>下面内容复制进去<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">## # unencrypted username/password pairs <span class="keyword">for</span> authentication.</span><br><span class="line">## service telnet</span><br><span class="line">service telnet</span><br><span class="line">&#123;</span><br><span class="line">flags = REUSE</span><br><span class="line">socket_type = stream</span><br><span class="line">wait = <span class="keyword">no</span></span><br><span class="line">user = root</span><br><span class="line">server =/usr/sbin/in.telnetd</span><br><span class="line">log_on_failure += USERID</span><br><span class="line">disable = <span class="keyword">no</span></span><br><span class="line">&#125;</span><br><span class="line">disable值变更： （yes ----&gt; <span class="keyword">no</span>）</span><br><span class="line"></span><br><span class="line">修改完成之后点击Esc键即可进入命令提示行开始进行保存操作，最下面的INSERT消失之后就可以输入：<span class="keyword">wq</span>进行保存操作了</span><br></pre></td></tr></table></figure></p>
+<h5 id="启动telnet服务-1"><a href="#启动telnet服务-1" class="headerlink" title="启动telnet服务"></a>启动telnet服务</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable xinetd.service //开机启动</span><br><span class="line"># systemctl enable telnet.socket //开机启动</span><br><span class="line"># systemctl start xinetd.service</span><br><span class="line"># systemctl start telnet.socket</span><br></pre></td></tr></table></figure>
+<h5 id="查看启动"><a href="#查看启动" class="headerlink" title="查看启动"></a>查看启动</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#ps -ef | <span class="keyword">grep</span> xinetd</span><br></pre></td></tr></table></figure>
+<h5 id="telnet登录验证"><a href="#telnet登录验证" class="headerlink" title="telnet登录验证"></a>telnet登录验证</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># telnet <span class="number">127.0</span>.<span class="number">0.1</span></span><br></pre></td></tr></table></figure>
+<h4 id="停止SSH服务"><a href="#停止SSH服务" class="headerlink" title="停止SSH服务"></a>停止SSH服务</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#systemctl <span class="keyword">stop</span> sshd.service</span><br></pre></td></tr></table></figure>
+<h4 id="卸载老版本的SSH"><a href="#卸载老版本的SSH" class="headerlink" title="卸载老版本的SSH"></a>卸载老版本的SSH</h4><h5 id="查询老版本的SSH"><a href="#查询老版本的SSH" class="headerlink" title="查询老版本的SSH"></a>查询老版本的SSH</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># rpm -<span class="keyword">qa</span> |<span class="keyword">grep</span> openssh</span><br><span class="line"># openssh-server-<span class="number">6.6</span>.<span class="number">1</span>p1-<span class="number">22</span>.el7.x86_64</span><br><span class="line"># openssh-clients-<span class="number">6.6</span>.<span class="number">1</span>p1-<span class="number">22</span>.el7.x86_64</span><br><span class="line"># openssh-<span class="number">6.6</span>.<span class="number">1</span>p1-<span class="number">22</span>.el7.x86_64</span><br></pre></td></tr></table></figure>
+<h5 id="卸载老版本的SSH-1"><a href="#卸载老版本的SSH-1" class="headerlink" title="卸载老版本的SSH"></a>卸载老版本的SSH</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># yum <span class="built_in">remove</span> eopenssh-server-<span class="number">6.6</span>.<span class="number">1</span>p1-<span class="number">22</span>.el7.x86_64</span><br><span class="line"># yum <span class="built_in">remove</span> eopenssh-clients-<span class="number">6.6</span>.<span class="number">1</span>p1-<span class="number">22</span>.el7.x86_64</span><br><span class="line"># yum <span class="built_in">remove</span> openssh-<span class="number">6.6</span>.<span class="number">1</span>p1-<span class="number">22</span>.el7.x86_64</span><br></pre></td></tr></table></figure>
+<h4 id="安装新版本的openSSH"><a href="#安装新版本的openSSH" class="headerlink" title="安装新版本的openSSH"></a>安装新版本的openSSH</h4><h5 id="备份原有SSH目录"><a href="#备份原有SSH目录" class="headerlink" title="备份原有SSH目录"></a>备份原有SSH目录</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mv /etc/ssh/ /etc/ssh.bak/</span><br></pre></td></tr></table></figure>
+<h5 id="编译openSSH"><a href="#编译openSSH" class="headerlink" title="编译openSSH"></a>编译openSSH</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">cd</span> /usr/src</span><br><span class="line"># tar -xvzf openssh-<span class="number">7.4</span>p1.tar.gz</span><br><span class="line"># <span class="keyword">cd</span> openssh-<span class="number">7.4</span>p1/</span><br><span class="line">#./configure --prefix=/usr/local --sysconfdir=/etc/ssh</span><br></pre></td></tr></table></figure>
+<p>遇到问题 lib.h missing<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#yum install zlib-devel</span><br></pre></td></tr></table></figure></p>
+<p>继续运行<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#./configure --prefix=/usr/local --sysconfdir=/etc/ssh</span><br></pre></td></tr></table></figure></p>
+<p>遇到问题 openssl header missing<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#yum install openSSl-devel</span><br></pre></td></tr></table></figure></p>
+<p>继续运行<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#./configure --prefix=/usr/local --sysconfdir=/etc/ssh</span><br></pre></td></tr></table></figure></p>
+<p>运行<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">make</span></span><br><span class="line"># <span class="keyword">make</span> install</span><br></pre></td></tr></table></figure></p>
+<h5 id="配置sshd服务"><a href="#配置sshd服务" class="headerlink" title="配置sshd服务"></a>配置sshd服务</h5><p>复制启动文件到/etc/init.d/下并命名为sshd：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">cp</span> contrib/redhat/sshd.init /etc/init.d/sshd</span><br><span class="line">#sed -i <span class="string">'s/\/usr\/sbin\/sshd/\/usr\/local\/sbin\/sshd/g'</span> /etc/init.d/sshd</span><br><span class="line">#/etc/init.d/sshd restart</span><br><span class="line">#mv /usr/bin/ssh /usr/bin/ssh_bak</span><br><span class="line">#mv /usr/local/bin/ssh /usr/bin/ssh</span><br></pre></td></tr></table></figure></p>
+<h5 id="设置root账户权限"><a href="#设置root账户权限" class="headerlink" title="设置root账户权限"></a>设置root账户权限</h5><p>openssh7.4默认root用户是不能用ssh远程登录的，需要修改配置文件<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">vi</span> /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure></p>
+<p>输入I为insert模式 找到#PermitRootLogin prohibit-password项，去掉注释并把prohibit-password改为yes<br>PermitRootLogin yes</p>
+<h5 id="启动openSSH"><a href="#启动openSSH" class="headerlink" title="启动openSSH"></a>启动openSSH</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#/bin/systemctl restart sshd.service</span><br><span class="line"># service sshd restart</span><br></pre></td></tr></table></figure>
+<p>遇到如下问题<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Restarting sshd (via systemctl): Job <span class="keyword">for</span> sshd.service failed because the contro</span><br><span class="line"><span class="keyword">l</span> process exited with error code. See <span class="string">"systemctl status sshd.service"</span> <span class="built_in">and</span> <span class="comment">"journ</span></span><br><span class="line">alctl -xe<span class="comment">" for details.</span></span><br><span class="line">FAILED]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修改sshd配置文件：</span><br><span class="line"><span class="keyword">vim</span> /etc/init.d/sshd</span><br><span class="line">SSHD=/usr/sbin/sshd 为 SSHD=/usr/local/sbin/sshd</span><br></pre></td></tr></table></figure>
+<h5 id="验证openSSH版本"><a href="#验证openSSH版本" class="headerlink" title="验证openSSH版本"></a>验证openSSH版本</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ssh -V</span><br></pre></td></tr></table></figure>
+<h4 id="卸载telnet"><a href="#卸载telnet" class="headerlink" title="卸载telnet"></a>卸载telnet</h4><h5 id="SSH登录"><a href="#SSH登录" class="headerlink" title="SSH登录"></a>SSH登录</h5><p>使用root用户，通过SSH协议登录服务器</p>
+<h5 id="停止telnet服务"><a href="#停止telnet服务" class="headerlink" title="停止telnet服务"></a>停止telnet服务</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl <span class="keyword">stop</span> telnet.socket</span><br><span class="line"># systemctl <span class="keyword">stop</span> xinetd</span><br></pre></td></tr></table></figure>
+<h5 id="卸载telnet-1"><a href="#卸载telnet-1" class="headerlink" title="卸载telnet"></a>卸载telnet</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># rpm -<span class="keyword">e</span> telnet-server.x86_64</span><br><span class="line"># rpm -<span class="keyword">e</span> telnet.x86_64</span><br><span class="line"># rpm -<span class="keyword">e</span> xinetd.x86_64</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/18/Markdown/" rel="prev" title="Markdown">
+                Markdown <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Neverborn" />
+            
+              <p class="site-author-name" itemprop="name">Neverborn</p>
+              <p class="site-description motion-element" itemprop="description">enjoy life:)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wenbonie83@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/iamsiren" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看现版本信息"><span class="nav-number">1.</span> <span class="nav-text">查看现版本信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看SSH版本"><span class="nav-number">1.1.</span> <span class="nav-text">查看SSH版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看SSL版本"><span class="nav-number">1.2.</span> <span class="nav-text">查看SSL版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看zlib版本"><span class="nav-number">1.3.</span> <span class="nav-text">查看zlib版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#升级openSSL-amp-amp-zlib"><span class="nav-number">1.4.</span> <span class="nav-text">升级openSSL&amp;&amp;zlib</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下载openssh-7-4"><span class="nav-number">1.5.</span> <span class="nav-text">下载openssh-7.4</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装并开启telnet服务"><span class="nav-number">2.</span> <span class="nav-text">安装并开启telnet服务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看telnet服务"><span class="nav-number">2.1.</span> <span class="nav-text">查看telnet服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关闭防火墙"><span class="nav-number">2.2.</span> <span class="nav-text">关闭防火墙</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动telnet服务"><span class="nav-number">2.3.</span> <span class="nav-text">启动telnet服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动telnet服务-1"><span class="nav-number">2.4.</span> <span class="nav-text">启动telnet服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看启动"><span class="nav-number">2.5.</span> <span class="nav-text">查看启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#telnet登录验证"><span class="nav-number">2.6.</span> <span class="nav-text">telnet登录验证</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#停止SSH服务"><span class="nav-number">3.</span> <span class="nav-text">停止SSH服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载老版本的SSH"><span class="nav-number">4.</span> <span class="nav-text">卸载老版本的SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查询老版本的SSH"><span class="nav-number">4.1.</span> <span class="nav-text">查询老版本的SSH</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#卸载老版本的SSH-1"><span class="nav-number">4.2.</span> <span class="nav-text">卸载老版本的SSH</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装新版本的openSSH"><span class="nav-number">5.</span> <span class="nav-text">安装新版本的openSSH</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#备份原有SSH目录"><span class="nav-number">5.1.</span> <span class="nav-text">备份原有SSH目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译openSSH"><span class="nav-number">5.2.</span> <span class="nav-text">编译openSSH</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置sshd服务"><span class="nav-number">5.3.</span> <span class="nav-text">配置sshd服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置root账户权限"><span class="nav-number">5.4.</span> <span class="nav-text">设置root账户权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动openSSH"><span class="nav-number">5.5.</span> <span class="nav-text">启动openSSH</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#验证openSSH版本"><span class="nav-number">5.6.</span> <span class="nav-text">验证openSSH版本</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载telnet"><span class="nav-number">6.</span> <span class="nav-text">卸载telnet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SSH登录"><span class="nav-number">6.1.</span> <span class="nav-text">SSH登录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#停止telnet服务"><span class="nav-number">6.2.</span> <span class="nav-text">停止telnet服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#卸载telnet-1"><span class="nav-number">6.3.</span> <span class="nav-text">卸载telnet</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Neverborn</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":80,"height":160},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>

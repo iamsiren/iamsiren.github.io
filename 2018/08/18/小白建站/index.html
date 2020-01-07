@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 最近由于科学上网的相关需求，因此购入VPS服务器一枚，本着充分发挥服务器光与电的原则，决定搭建个博客玩一玩。起初尝试wordpress搭建博客，经过一番折腾，已掌握新技能。现如今接触到GitHub Pages也可以搭建博客，而经过体验，比较两种博客搭建方式优劣。结论：推荐作为搭建博客的第一选择。  为什么选择 GitHub Pages ？  Github Pages是用户编写的、托管在git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小白Github Pages博客教程">
+<meta property="og:url" content="http://yoursite.com/2018/08/18/小白建站/index.html">
+<meta property="og:site_name" content="Siren&#39;s Blog">
+<meta property="og:description" content="前言 最近由于科学上网的相关需求，因此购入VPS服务器一枚，本着充分发挥服务器光与电的原则，决定搭建个博客玩一玩。起初尝试wordpress搭建博客，经过一番折腾，已掌握新技能。现如今接触到GitHub Pages也可以搭建博客，而经过体验，比较两种博客搭建方式优劣。结论：推荐作为搭建博客的第一选择。  为什么选择 GitHub Pages ？  Github Pages是用户编写的、托管在git">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-c1cbdad9286a0cf8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-06197bdacc77a883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-6b977dfa711624eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-421385ef23dcd372.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-8ce432ab9dd77253.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-ab3ba539466f4286.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-00fea4c0bac64cae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-6c64e152933eee1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-5aaab738a21fdc25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-304684f3400552a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-e7c3c9ae44f0b5dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-ad0f92aca226e00a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-c13fe3d39b2ffc16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-0c9242415d5c5987.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-459d1393035b4caa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-90f60a178ca6e73d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-e10e3bc8b21bae24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-6bb3b45aba761179.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-f80cd24d77ff058b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-e3d42b2900cfaf06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-ca97a380ec0458bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-cb2d670b036efc43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-017bb95e62574be1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-01-07T18:00:34.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小白Github Pages博客教程">
+<meta name="twitter:description" content="前言 最近由于科学上网的相关需求，因此购入VPS服务器一枚，本着充分发挥服务器光与电的原则，决定搭建个博客玩一玩。起初尝试wordpress搭建博客，经过一番折腾，已掌握新技能。现如今接触到GitHub Pages也可以搭建博客，而经过体验，比较两种博客搭建方式优劣。结论：推荐作为搭建博客的第一选择。  为什么选择 GitHub Pages ？  Github Pages是用户编写的、托管在git">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/53729-c1cbdad9286a0cf8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/18/小白建站/"/>
+
+
+
+
+
+  <title>小白Github Pages博客教程 | Siren's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Siren's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/小白建站/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Neverborn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Siren's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">小白Github Pages博客教程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T23:12:55+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术分享/" itemprop="url" rel="index">
+                    <span itemprop="name">技术分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>最近由于科学上网的相关需求，因此购入VPS服务器一枚，本着充分发挥服务器光与电的原则，决定搭建个博客玩一玩。起初尝试wordpress搭建博客，经过一番折腾，已掌握新技能。现如今接触到GitHub Pages也可以搭建博客，而经过体验，比较两种博客搭建方式优劣。<br>结论：推荐作为搭建博客的第一选择。</p>
+</blockquote>
+<h3 id="为什么选择-GitHub-Pages-？"><a href="#为什么选择-GitHub-Pages-？" class="headerlink" title="为什么选择 GitHub Pages ？"></a>为什么选择 GitHub Pages ？</h3><blockquote>
+<ul>
+<li>Github Pages是用户编写的、托管在github上的静态网页</li>
+<li>wordpress平台的工具繁多，虽比较人性化，但稍显臃肿</li>
+<li>GitHub Pages主题风格更加简洁 非常符合我的审美</li>
+<li>GitHub Pages原生支持Markdown的博文方式</li>
+<li>GitHub是潮流趋势</li>
+</ul>
+</blockquote>
+<h3 id="搭建教程"><a href="#搭建教程" class="headerlink" title="搭建教程"></a>搭建教程</h3><h4 id="预告"><a href="#预告" class="headerlink" title="预告"></a>预告</h4><blockquote>
+<p>本文是基于网上若干搭建教程，经过踩坑填坑的过程总结出来的。希望送人玫瑰手留余香，期待小白技术者也能搭建出fashion的博客。</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><p><img src="https://upload-images.jianshu.io/upload_images/53729-c1cbdad9286a0cf8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">官网点我</a><br>git是用于Linux内核开发的版本控制工具。与CVS、Subversion一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。git的速度很快，这对于诸如Linux内核这样的大项目来说自然很重要。git最为出色的是它的合并追踪（merge tracing）能力。<br>打开官网如下图所示，选择Windows版本，下载成功后一路安装即可。<br><img src="https://upload-images.jianshu.io/upload_images/53729-06197bdacc77a883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>下载完成，通过在命令行输入 <code>git version</code> 查看是否安装成功，有输出版本号说明安装成功。</p>
+<h4 id="Git基本操作"><a href="#Git基本操作" class="headerlink" title="Git基本操作"></a>Git基本操作</h4><p><img src="https://upload-images.jianshu.io/upload_images/53729-6b977dfa711624eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>鼠标右键菜单里就多了<code>Git GUI Here</code>和<code>Git Bash Here</code>两个按钮，一个是图形界面的Git操作，一个是命令行，我们选择<code>Git Bash Here</code>。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/53729-421385ef23dcd372.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/53729-8ce432ab9dd77253.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h4 id="注册GitHub"><a href="#注册GitHub" class="headerlink" title="注册GitHub"></a>注册GitHub</h4><p>GitHub是基于git实现的代码托管。git可能是目前最好用的版本控制系统了，非常受欢迎。GitHub可以免费使用，并且快速稳定。<br>Github上面的世界很精彩，用久了你的眼界会开阔很多。进入官网选择右上角的 <code>Sign Up</code><br><img src="https://upload-images.jianshu.io/upload_images/53729-ab3ba539466f4286.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="部署SSH"><a href="#部署SSH" class="headerlink" title="部署SSH"></a>部署SSH</h4><p>配置Github的SSH密钥可以让本地git项目与远程的github建立联系，让我们在本地写了代码之后直接通过git操作就可以实现本地代码库与Github代码库同步。操作如下：</p>
+<h5 id="查看是否存在SSH密钥-keys"><a href="#查看是否存在SSH密钥-keys" class="headerlink" title="查看是否存在SSH密钥(keys)"></a>查看是否存在SSH密钥(keys)</h5><p>首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/. ssh</span><br></pre></td></tr></table></figure>
+<p>检查你本机用户home目录下是否存在.ssh目录</p>
+<p>如果，不存在此目录，则进行下一步操作，否则，你本机已经存在ssh公钥和私钥，可以略过下一步，直接进入<code>在GitHub账户中添加你的公钥操作</code>。</p>
+<h5 id="创建一对新的SSH密钥-keys"><a href="#创建一对新的SSH密钥-keys" class="headerlink" title="创建一对新的SSH密钥(keys)"></a>创建一对新的SSH密钥(keys)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br><span class="line">#这将按照你提供的邮箱地址，创建一对密钥</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]</span><br></pre></td></tr></table></figure>
+<p>直接回车，则将密钥按默认文件进行存储。此时也可以输入特定的文件名，比如<code>/c/Users/you/.ssh/github_rsa</code></p>
+<p>接着，根据提示，你需要输入密码和确认密码（说到这里，如果你很放心，其实可以不用密码，就是到输密码的地方，都直接回车，所以每次push就只管回车就行了。所谓的最安全的密码，就是没有密码 哈哈）。相关提示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase): [Type a passphrase]</span><br><span class="line">Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure>
+<p>输入完成之后，屏幕会显示如下信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved in /c/Users/you/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com</span><br></pre></td></tr></table></figure>
+<h5 id="在GitHub账户中添加你的公钥"><a href="#在GitHub账户中添加你的公钥" class="headerlink" title="在GitHub账户中添加你的公钥"></a>在GitHub账户中添加你的公钥</h5><p>运行如下命令，将公钥的内容复制到系统粘贴板(clipboard)中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clip &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<h5 id="登陆GitHub-进入Account-Settings"><a href="#登陆GitHub-进入Account-Settings" class="headerlink" title="登陆GitHub,进入Account Settings"></a>登陆GitHub,进入Account Settings</h5><p><img src="http://upload-images.jianshu.io/upload_images/53729-00fea4c0bac64cae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h5 id="选择SSH-Keys"><a href="#选择SSH-Keys" class="headerlink" title="选择SSH Keys"></a>选择SSH Keys</h5><p><img src="http://upload-images.jianshu.io/upload_images/53729-6c64e152933eee1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h5 id="粘贴密钥"><a href="#粘贴密钥" class="headerlink" title="粘贴密钥"></a>粘贴密钥</h5><p><img src="http://upload-images.jianshu.io/upload_images/53729-5aaab738a21fdc25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><blockquote>
+<p>可以输入下面的命令，看看设置是否成功，<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>的部分不要修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>若是下面的反馈：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;github.com (207.97.227.239)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
+<p>不要紧张，输入yes就好，然后会看到：<br><img src="https://upload-images.jianshu.io/upload_images/53729-304684f3400552a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="设置用户信息"><a href="#设置用户信息" class="headerlink" title="设置用户信息"></a>设置用户信息</h5><p>现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。 Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字根据自己的喜好自己取，而不是GitHub的昵称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;XX&quot;//用户名</span><br><span class="line">$ git config --global user.email  &quot;XX@163.com&quot;//填写自己的邮箱</span><br></pre></td></tr></table></figure>
+<h4 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h4><p>在 Windows 环境下安装 Node.js 非常简单，仅须到<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官网下载</a>安装文件并执行即可完成安装。<br><img src="http://upload-images.jianshu.io/upload_images/53729-e7c3c9ae44f0b5dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p> 像我的是Windows 64位，直接下载安装即可。</p>
+<h4 id="安装hexo框架"><a href="#安装hexo框架" class="headerlink" title="安装hexo框架"></a>安装hexo框架</h4><p>通过以上环境的准备，我们接下来就需要安装博客框架啦（越来越接近成功）。<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。我们通过在桌面右键鼠标，点击<code>Git Bash Here</code>，输入npm命令安装该主题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>第一句是安装hexo，第二句是安装hexo部署到git page的deployer，两个都需要安装。</p>
+<h5 id="配置hexo"><a href="#配置hexo" class="headerlink" title="配置hexo"></a>配置hexo</h5><p>安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
+<p>初始化完成后，Hexo 将会在指定文件夹中新建所需要的文件。Hexo文件夹下的目录如下：<br><img src="https://upload-images.jianshu.io/upload_images/53729-ad0f92aca226e00a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h5><p>执行下面语句，浏览器输入<code>localhost:4000</code>查看运行效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>用浏览器访问<code>localhost:4000</code>,本地效果如下，这个是hexo的默认主题landscape，而我们会使用的是NexT主题，这个在后面会说到如何配置。<br><img src="https://upload-images.jianshu.io/upload_images/53729-c13fe3d39b2ffc16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<blockquote>
+<p>注意：若提示404页面，则可能是4000端口被占用，需要更换个服务器端口。<br>Hexo根目录右键<code>git bash here</code>执行<code>hexo s -p 5000</code>命令，把端口号换为5000即可。</p>
+</blockquote>
+<h4 id="Hexo部署到Github"><a href="#Hexo部署到Github" class="headerlink" title="Hexo部署到Github"></a>Hexo部署到Github</h4><p>登陆GitHub，创建一个Github Pages项目。点击<a href="https://github.com/new" target="_blank" rel="noopener">New repository</a>。<br>创建要点如下： <img src="http://upload-images.jianshu.io/upload_images/53729-0c9242415d5c5987.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h5 id="得到GitHub-Pages的SSH地址"><a href="#得到GitHub-Pages的SSH地址" class="headerlink" title="得到GitHub Pages的SSH地址"></a>得到GitHub Pages的SSH地址</h5><p>登录Github打开自己的项目 <code>username.github.io</code><br><img src="http://upload-images.jianshu.io/upload_images/53729-459d1393035b4caa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>点击SSH，选择SSH类型地址</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/53729-90f60a178ca6e73d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="复制GitHub-Pages的SSH地址"><a href="#复制GitHub-Pages的SSH地址" class="headerlink" title="复制GitHub Pages的SSH地址"></a>复制GitHub Pages的SSH地址</h5><p><img src="https://upload-images.jianshu.io/upload_images/53729-e10e3bc8b21bae24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="更改config-xml"><a href="#更改config-xml" class="headerlink" title="更改config.xml"></a>更改config.xml</h5><p>打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.xml文件</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/53729-6bb3b45aba761179.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>在配置文件里作如下修改，保存。<br><img src="https://upload-images.jianshu.io/upload_images/53729-f80cd24d77ff058b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="部署命令"><a href="#部署命令" class="headerlink" title="部署命令"></a>部署命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>执行完之后会让你输入github的账号和密码，输入完后就可以登录我们自己的部署在Github Pages服务器上的博客了。对应的地址是 <code>username.github.io</code></p>
+<p>假如这时候，报错 <code>ERROR Deployer not found: git</code>，那么就是你的deployer没有安装成功，你需要执行如下命令再安装一次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>这样，你再执行<code>hexo g -d</code>，你的博客就部署到Github上了。</p>
+<h5 id="部署发布成功"><a href="#部署发布成功" class="headerlink" title="部署发布成功"></a>部署发布成功</h5><p>在浏览器上输入Github Pager为我们生成的外链（例如我的是：<a href="https://iamsiren.github.io/" target="_blank" rel="noopener">https://iamsiren.github.io/</a>，而你的只需要把你的github用户名替换掉这个链接中的iamsiren，因为我的用户名是这个，那么你自己的专属博客地址就是：[https://[您的用户名].github.io/）即可看到自己的博客了。<br>当然，每一个人都可以通过这个地址访问到你的博客了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/53729-e3d42b2900cfaf06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h4 id="更换Next主题"><a href="#更换Next主题" class="headerlink" title="更换Next主题"></a>更换Next主题</h4><p>Hexo框架下有很多丰富的主题，在此我们更换为使用比较热门的Next主题。</p>
+<h5 id="下载Next主题"><a href="#下载Next主题" class="headerlink" title="下载Next主题"></a>下载Next主题</h5><p>打开Hexo文件夹下的themes目录（F:\Blog\hexo\themes），右键Git Bash，在命令行输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir themes/next #新建next文件夹操作</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next #下载主题到本地</span><br></pre></td></tr></table></figure></p>
+<p>下载中，等待下载完成：<br><img src="http://upload-images.jianshu.io/upload_images/53729-ca97a380ec0458bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h5 id="修改Hexo配置文件"><a href="#修改Hexo配置文件" class="headerlink" title="修改Hexo配置文件"></a>修改Hexo配置文件</h5><p>下载完成后，打开Hexo文件夹下的配置文件_config.yml</p>
+<p>修改参数为：theme: hexo-theme-next</p>
+<h5 id="部署主题到本地"><a href="#部署主题到本地" class="headerlink" title="部署主题到本地"></a>部署主题到本地</h5><p>返回Hexo目录，右键Git Bash，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
+<p>打开浏览器，输入 <code>http://localhost:4000/</code> 即可看见我们的主题已经更换了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/53729-cb2d670b036efc43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h4 id="部署Next主题到Github"><a href="#部署Next主题到Github" class="headerlink" title="部署Next主题到Github"></a>部署Next主题到Github</h4><p>打开Hexo文件夹，右键Git Bash，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清除缓存</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
+<p>更多修改效果请查看对应主题的说明文档，<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">点击此</a>查看本主题(Next)对应的说明文档。</p>
+<h4 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h4><p>我们注意到在 \Hexo\source_posts 文件夹下存放着我们的文章，它们的格式都是以<code>.md</code>格式结尾的，没错，Hexo也是支持Markdown语法的，所以当我们需要写具有格式化的文章时，我们可以使用支持Markdown语法的编辑器进行文章编译，然后保存文件到 \Hexo\source_posts 文件夹下即可。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/53729-017bb95e62574be1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>复制进去之后，只要执行推送到我们的Github仓库即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>至此博客搭建过程已经接近尾声，而博客的优化还没结束。由于Hexo框架的开源性，还有很多玩法有待我们发掘。：）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/18/Markdown/" rel="next" title="Markdown">
+                <i class="fa fa-chevron-left"></i> Markdown
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/07/2019回顾/" rel="prev" title="2019-涅槃重生">
+                2019-涅槃重生 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Neverborn" />
+            
+              <p class="site-author-name" itemprop="name">Neverborn</p>
+              <p class="site-description motion-element" itemprop="description">enjoy life:)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wenbonie83@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/iamsiren" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么选择-GitHub-Pages-？"><span class="nav-number">2.</span> <span class="nav-text">为什么选择 GitHub Pages ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建教程"><span class="nav-number">3.</span> <span class="nav-text">搭建教程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预告"><span class="nav-number">3.1.</span> <span class="nav-text">预告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Git"><span class="nav-number">3.2.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git基本操作"><span class="nav-number">3.3.</span> <span class="nav-text">Git基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册GitHub"><span class="nav-number">3.4.</span> <span class="nav-text">注册GitHub</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署SSH"><span class="nav-number">3.5.</span> <span class="nav-text">部署SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看是否存在SSH密钥-keys"><span class="nav-number">3.5.1.</span> <span class="nav-text">查看是否存在SSH密钥(keys)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建一对新的SSH密钥-keys"><span class="nav-number">3.5.2.</span> <span class="nav-text">创建一对新的SSH密钥(keys)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在GitHub账户中添加你的公钥"><span class="nav-number">3.5.3.</span> <span class="nav-text">在GitHub账户中添加你的公钥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#登陆GitHub-进入Account-Settings"><span class="nav-number">3.5.4.</span> <span class="nav-text">登陆GitHub,进入Account Settings</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选择SSH-Keys"><span class="nav-number">3.5.5.</span> <span class="nav-text">选择SSH Keys</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#粘贴密钥"><span class="nav-number">3.5.6.</span> <span class="nav-text">粘贴密钥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#测试"><span class="nav-number">3.5.7.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置用户信息"><span class="nav-number">3.5.8.</span> <span class="nav-text">设置用户信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装NodeJS"><span class="nav-number">3.6.</span> <span class="nav-text">安装NodeJS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装hexo框架"><span class="nav-number">3.7.</span> <span class="nav-text">安装hexo框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置hexo"><span class="nav-number">3.7.1.</span> <span class="nav-text">配置hexo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#本地运行"><span class="nav-number">3.7.2.</span> <span class="nav-text">本地运行</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo部署到Github"><span class="nav-number">3.8.</span> <span class="nav-text">Hexo部署到Github</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#得到GitHub-Pages的SSH地址"><span class="nav-number">3.8.1.</span> <span class="nav-text">得到GitHub Pages的SSH地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#复制GitHub-Pages的SSH地址"><span class="nav-number">3.8.2.</span> <span class="nav-text">复制GitHub Pages的SSH地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更改config-xml"><span class="nav-number">3.8.3.</span> <span class="nav-text">更改config.xml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#部署命令"><span class="nav-number">3.8.4.</span> <span class="nav-text">部署命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#部署发布成功"><span class="nav-number">3.8.5.</span> <span class="nav-text">部署发布成功</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更换Next主题"><span class="nav-number">3.9.</span> <span class="nav-text">更换Next主题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#下载Next主题"><span class="nav-number">3.9.1.</span> <span class="nav-text">下载Next主题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改Hexo配置文件"><span class="nav-number">3.9.2.</span> <span class="nav-text">修改Hexo配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#部署主题到本地"><span class="nav-number">3.9.3.</span> <span class="nav-text">部署主题到本地</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署Next主题到Github"><span class="nav-number">3.10.</span> <span class="nav-text">部署Next主题到Github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写文章"><span class="nav-number">3.11.</span> <span class="nav-text">写文章</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Neverborn</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":80,"height":160},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
