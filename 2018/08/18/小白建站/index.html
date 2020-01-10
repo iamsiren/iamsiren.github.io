@@ -94,8 +94,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-5aaab738a21fdc25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-304684f3400552a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-e7c3c9ae44f0b5dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-ad0f92aca226e00a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-c13fe3d39b2ffc16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://yoursite.com/images/hexo.PNG">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-0c9242415d5c5987.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-459d1393035b4caa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/53729-90f60a178ca6e73d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -117,7 +116,7 @@
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-250083c7e8bbf0593967880a8bf59881_hd.jpg">
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-aba1c2c3c5d0f6cb8f45e312aeb27009_hd.jpg">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-c95cdb028801ec96d3eeb6163e1834fa_hd.jpg">
-<meta property="og:updated_time" content="2020-01-10T14:22:28.330Z">
+<meta property="og:updated_time" content="2020-01-10T14:27:29.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小白Github Pages博客教程">
 <meta name="twitter:description" content="前言 最近由于科学上网的相关需求，因此购入VPS服务器一枚，本着充分发挥服务器光与电的原则，决定搭建个博客玩一玩。起初尝试wordpress搭建博客，经过一番折腾，已掌握新技能。现如今接触到GitHub Pages也可以搭建博客，而经过体验，比较两种博客搭建方式优劣。结论：推荐作为搭建博客的第一选择。  为什么选择 GitHub Pages ？  Github Pages是用户编写的、托管在git">
@@ -328,7 +327,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-10T22:22:28+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-10T22:27:29+08:00">
                 2020-01-10
               </time>
             
@@ -456,13 +455,10 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>第一句是安装hexo，第二句是安装hexo部署到git page的deployer，两个都需要安装。</p>
 <h5 id="配置hexo"><a href="#配置hexo" class="headerlink" title="配置hexo"></a>配置hexo</h5><p>安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
-<p>初始化完成后，Hexo 将会在指定文件夹中新建所需要的文件。Hexo文件夹下的目录如下：<br><img src="https://upload-images.jianshu.io/upload_images/53729-ad0f92aca226e00a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>初始化完成后，Hexo 将会在指定文件夹中新建所需要的文件。Hexo文件夹下的目录如下：<br><img src="/images/hexo.PNG" alt="image.png"></p>
 <h5 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h5><p>执行下面语句，浏览器输入<code>localhost:4000</code>查看运行效果。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>用浏览器访问<code>localhost:4000</code>,本地效果如下，这个是hexo的默认主题landscape，而我们会使用的是NexT主题，这个在后面会说到如何配置。<br><img src="https://upload-images.jianshu.io/upload_images/53729-c13fe3d39b2ffc16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<blockquote>
-<p>注意：若提示404页面，则可能是4000端口被占用，需要更换个服务器端口。<br>Hexo根目录右键<code>git bash here</code>执行<code>hexo s -p 5000</code>命令，把端口号换为5000即可。</p>
-</blockquote>
+<p>用浏览器访问<code>localhost:4000</code>,本地效果如下，这个是hexo的默认主题landscape，而我们会使用的是NexT主题，这个在后面会说到如何配置。</p>
 <h4 id="Hexo部署到Github"><a href="#Hexo部署到Github" class="headerlink" title="Hexo部署到Github"></a>Hexo部署到Github</h4><p>登陆GitHub，创建一个Github Pages项目。点击<a href="https://github.com/new" target="_blank" rel="noopener">New repository</a>。<br>创建要点如下： <img src="http://upload-images.jianshu.io/upload_images/53729-0c9242415d5c5987.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <h5 id="得到GitHub-Pages的SSH地址"><a href="#得到GitHub-Pages的SSH地址" class="headerlink" title="得到GitHub Pages的SSH地址"></a>得到GitHub Pages的SSH地址</h5><p>登录Github打开自己的项目 <code>username.github.io</code><br><img src="http://upload-images.jianshu.io/upload_images/53729-459d1393035b4caa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>点击SSH，选择SSH类型地址</p>
