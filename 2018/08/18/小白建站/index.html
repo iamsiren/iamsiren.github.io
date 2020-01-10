@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Siren&#39;s Blog">
 <meta property="og:description" content="前言 最近由于科学上网的相关需求，因此购入VPS服务器一枚，本着充分发挥服务器光与电的原则，决定搭建个博客玩一玩。起初尝试wordpress搭建博客，经过一番折腾，已掌握新技能。现如今接触到GitHub Pages也可以搭建博客，而经过体验，比较两种博客搭建方式优劣。结论：推荐作为搭建博客的第一选择。  为什么选择 GitHub Pages ？  Github Pages是用户编写的、托管在git">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/git.PNG">
+<meta property="og:image" content="http://yoursite.com/images/git.jpg">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/4/25/162fcc0987bf1c0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-421385ef23dcd372.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/53729-8ce432ab9dd77253.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -112,11 +112,11 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/32598-e9556783ec19fc4f.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/996/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/32598-f1538c2cfce35b1d.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/612/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/32598-3f2f707a868a37f2.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/709/format/webp">
-<meta property="og:updated_time" content="2020-01-10T13:13:32.916Z">
+<meta property="og:updated_time" content="2020-01-10T13:15:26.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小白Github Pages博客教程">
 <meta name="twitter:description" content="前言 最近由于科学上网的相关需求，因此购入VPS服务器一枚，本着充分发挥服务器光与电的原则，决定搭建个博客玩一玩。起初尝试wordpress搭建博客，经过一番折腾，已掌握新技能。现如今接触到GitHub Pages也可以搭建博客，而经过体验，比较两种博客搭建方式优劣。结论：推荐作为搭建博客的第一选择。  为什么选择 GitHub Pages ？  Github Pages是用户编写的、托管在git">
-<meta name="twitter:image" content="http://yoursite.com/images/git.PNG">
+<meta name="twitter:image" content="http://yoursite.com/images/git.jpg">
 
 
 
@@ -404,7 +404,7 @@
 <p>本文是基于网上若干搭建教程，经过踩坑填坑的过程总结出来的。希望送人玫瑰手留余香，期待小白技术者也能搭建出fashion的博客。</p>
 </blockquote>
 <a id="more"></a>
-<h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">官网点我</a><br>git是用于Linux内核开发的版本控制工具。与CVS、Subversion一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。git的速度很快，这对于诸如Linux内核这样的大项目来说自然很重要。git最为出色的是它的合并追踪（merge tracing）能力。<br>打开官网如下图所示，选择Windows版本，下载成功后一路安装即可。<br><img src="/images/git.PNG" alt="image.png"><br>下载完成，通过在命令行输入 <code>git version</code> 查看是否安装成功，有输出版本号说明安装成功。</p>
+<h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">官网点我</a><br>git是用于Linux内核开发的版本控制工具。与CVS、Subversion一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。git的速度很快，这对于诸如Linux内核这样的大项目来说自然很重要。git最为出色的是它的合并追踪（merge tracing）能力。<br>打开官网如下图所示，选择Windows版本，下载成功后一路安装即可。<br><img src="/images/git.jpg" alt="image.png"><br>下载完成，通过在命令行输入 <code>git version</code> 查看是否安装成功，有输出版本号说明安装成功。</p>
 <h4 id="Git基本操作"><a href="#Git基本操作" class="headerlink" title="Git基本操作"></a>Git基本操作</h4><p><img src="https://user-gold-cdn.xitu.io/2018/4/25/162fcc0987bf1c0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="image.png"></p>
 <p>鼠标右键菜单里就多了<code>Git GUI Here</code>和<code>Git Bash Here</code>两个按钮，一个是图形界面的Git操作，一个是命令行，我们选择<code>Git Bash Here</code>。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/53729-421385ef23dcd372.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
