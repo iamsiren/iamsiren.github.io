@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/01/07/2019/</loc>
+    
+    <lastmod>2020-01-18T12:13:06.800Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/08/18/linux_SSH/</loc>
+    
+    <lastmod>2020-01-18T12:12:40.277Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/01/18/%E5%A6%82%E4%BD%95%E7%A7%AF%E6%9E%81%E7%9A%84%E9%9D%A2%E5%AF%B9%E7%94%9F%E6%B4%BB/</loc>
+    
+    <lastmod>2020-01-18T11:16:19.690Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2020-01-11T06:10:08.852Z</lastmod>
@@ -16,30 +37,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/01/07/2019/</loc>
-    
-    <lastmod>2020-01-10T13:08:02.673Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/01/10/test/</loc>
-    
-    <lastmod>2020-01-10T13:05:10.330Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2018/08/18/Markdown/</loc>
     
     <lastmod>2018-08-18T09:17:17.411Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/08/18/linux_SSH/</loc>
-    
-    <lastmod>2018-08-18T09:17:07.903Z</lastmod>
     
   </url>
   
